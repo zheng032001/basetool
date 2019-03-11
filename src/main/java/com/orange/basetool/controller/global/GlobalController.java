@@ -1,7 +1,6 @@
 package com.orange.basetool.controller.global;
 
 import com.orange.basetool.service.primary.ILoginLogoutService;
-import com.orange.basetool.service.primary.impl.LoginLogoutService;
 import com.orange.basetool.service.test.impl.TestService;
 import com.orange.basetool.util.JsonResult;
 import org.slf4j.Logger;
@@ -65,6 +64,39 @@ public class GlobalController {
     public String homePage(HttpServletRequest httpServletRequest){
         log.info("正在处理请求：" + httpServletRequest.getRequestURI());
         return "global/home";
+    }
+
+    /**
+     * 错误页面400
+     * @param httpServletRequest
+     * @return
+     */
+    @RequestMapping("/error-400")
+    public String error400Page(HttpServletRequest httpServletRequest){
+        log.info("正在处理请求：" + httpServletRequest.getRequestURI());
+        return "global/error/400";
+    }
+
+    /**
+     * 错误页面404
+     * @param httpServletRequest
+     * @return
+     */
+    @RequestMapping("/error-404")
+    public String error404Page(HttpServletRequest httpServletRequest){
+        log.info("正在处理请求：" + httpServletRequest.getRequestURI());
+        return "global/error/404";
+    }
+
+    /**
+     * 错误页面500
+     * @param httpServletRequest
+     * @return
+     */
+    @RequestMapping("/error-500")
+    public String error500Page(HttpServletRequest httpServletRequest){
+        log.info("正在处理请求：" + httpServletRequest.getRequestURI());
+        return "global/error/500";
     }
 
 }

@@ -3,6 +3,9 @@ server:
   port: 80
   tomcat:
     uri-encoding: UTF-8
+  servlet:
+    session:
+      timeout: 18000s
 
 # spring相关配置
 spring:
