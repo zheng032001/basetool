@@ -37,14 +37,44 @@ spring:
       driver-class-name: com.mysql.cj.jdbc.Driver
       username: orange
       password: orange
-      jdbc-url: jdbc:mysql://localhost:3306/dev?serverTimezone=GMT&characterEncoding=utf-8&allowMultiQueries=true
+      # SpringBoot原生DHCP配置
+#      jdbc-url: jdbc:mysql://localhost:3306/dev?serverTimezone=GMT&characterEncoding=utf-8&allowMultiQueries=true
+      # Druid 配置
+      url: jdbc:mysql://localhost:3306/dev?serverTimezone=GMT&characterEncoding=utf-8&allowMultiQueries=true
       type: com.alibaba.druid.pool.DruidDataSource
+      initialSize: 2
+      minIdle: 2
+      maxActive: 10
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
     test-db:
       driver-class-name: com.mysql.cj.jdbc.Driver
       username: orange
       password: orange
-      jdbc-url: jdbc:mysql://localhost:3306/test?serverTimezone=GMT&characterEncoding=utf-8&allowMultiQueries=true
+       # SpringBoot原生DHCP配置
+#      jdbc-url: jdbc:mysql://localhost:3306/test?serverTimezone=GMT&characterEncoding=utf-8&allowMultiQueries=true
+      # Druid 配置
+      url: jdbc:mysql://localhost:3306/test?serverTimezone=GMT&characterEncoding=utf-8&allowMultiQueries=true
       type: com.alibaba.druid.pool.DruidDataSource
+      initialSize: 2
+      minIdle: 2
+      maxActive: 10
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
 
 
 

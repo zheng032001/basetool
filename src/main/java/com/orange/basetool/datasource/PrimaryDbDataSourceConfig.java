@@ -1,6 +1,7 @@
 package com.orange.basetool.datasource;
 
 
+import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -28,7 +29,10 @@ public class PrimaryDbDataSourceConfig {
     @ConfigurationProperties(prefix = "spring.datasource.primary-db")
     @Primary
     public DataSource primaryDbDataSource(){
-        return DataSourceBuilder.create().build();
+        // SpringBoot原生方法
+//        return DataSourceBuilder.create().build();
+        // Druid 数据源
+        return new DruidDataSource();
     }
 
     @Bean
