@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>欢迎登录</title>
+    <link rel="stylesheet" th:href="@{/static/plugins/layui/css/layui.css}">
+</head>
+
+<body class="layui-layout-body" style="background-color: #F2F2F2">
+
+<div class="layui-container">
+    <div class="layui-row" style="margin-top:200px;">
+        <div class="layui-col-md4 layui-col-md-offset4">
+            <fieldset class="layui-elem-field" style="background-color: #FFFFFF">
+                <legend th:text="#{system.fullName}"></legend>
+                <div class="layui-field-box">
+                    <form class="layui-form layui-form-pane" action="">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label layui-icon layui-icon-username" style="width: 60px;margin-left:50px;"></label>
+                            <div class="layui-input-inline">
+                                <input id="username" type="text" name="username" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label layui-icon layui-icon-password" style="width: 60px;margin-left:50px;"></label>
+                            <div class="layui-input-inline">
+                                <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div style="width: 216px; margin-left:auto;margin-right: auto;">
+                                <button class="layui-btn layui-btn-fluid">登录</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+</body>
+<script th:src="@{/static/plugins/jquery/jquery.min.1.9.1.js}"></script>
+<script th:src="@{/static/js/global/login.js}"></script>
+<script th:src="@{/static/plugins/layui/layui.all.js}"></script>
+</html>

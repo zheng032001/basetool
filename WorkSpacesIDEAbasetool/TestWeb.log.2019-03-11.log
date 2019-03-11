@@ -1,0 +1,29 @@
+2019-03-11 10:27:26.869 - Starting BasetoolApplication on DESKTOP-9D5GEKU with PID 14348 (E:\WorkSpaces\IDEA\basetool\target\classes started by admin in E:\WorkSpaces\IDEA\basetool)
+2019-03-11 10:27:26.873 - No active profile set, falling back to default profiles: default
+2019-03-11 10:27:27.025 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-03-11 10:27:27.025 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-03-11 10:27:28.641 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-03-11 10:27:28.644 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-11 10:27:28.704 - Finished Spring Data repository scanning in 31ms. Found 0 repository interfaces.
+2019-03-11 10:27:29.390 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$7d072e9d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-11 10:27:30.381 - Tomcat initialized with port(s): 80 (http)
+2019-03-11 10:27:30.408 - Initializing ProtocolHandler ["http-nio-80"]
+2019-03-11 10:27:30.424 - Starting service [Tomcat]
+2019-03-11 10:27:30.425 - Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-03-11 10:27:30.438 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Developments\JDK1.8\JDK\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;D:\Developments\Python2.7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\CommonTools\TortoiseSVN1.9\bin;C:\WINDOWS\System32\OpenSSH\;D:\Developments\Microsoft VS Code\bin;D:\Developments\nodejs\;C:\Users\admin\AppData\Local\GitHubDesktop\app-1.4.3\resources\app\git\mingw64\bin;C:\Users\admin\AppData\Local\GitHubDesktop\app-1.4.3\resources\app\git\mingw64\libexec\git-core;C:\Program Files\Pandoc\;C:\Program Files (x86)\Google\Chrome\Application;C:\Users\admin\AppData\Local\Microsoft\WindowsApps;D:\Developments\Microsoft VS Code\bin;D:\Developments\UltraEdit\;C:\Users\admin\AppData\Roaming\npm;C:\Users\admin\AppData\Local\GitHubDesktop\app-1.4.3\resources\app\git\mingw64\bin;C:\Users\admin\AppData\Local\GitHubDesktop\app-1.4.3\resources\app\git\mingw64\libexec\git-core;C:\Users\admin\AppData\Local\GitHubDesktop\bin;;.]
+2019-03-11 10:27:30.757 - Initializing Spring embedded WebApplicationContext
+2019-03-11 10:27:30.757 - Root WebApplicationContext: initialization completed in 3732 ms
+2019-03-11 10:27:32.297 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-11 10:27:34.508 - LiveReload server is running on port 35729
+2019-03-11 10:27:34.578 - Starting ProtocolHandler ["http-nio-80"]
+2019-03-11 10:27:34.654 - Tomcat started on port(s): 80 (http) with context path ''
+2019-03-11 10:27:34.659 - Started BasetoolApplication in 9.003 seconds (JVM running for 13.504)
+2019-03-11 10:27:40.541 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-03-11 10:27:40.541 - Initializing Servlet 'dispatcherServlet'
+2019-03-11 10:27:40.570 - Completed initialization in 28 ms
+2019-03-11 10:27:40.657 - 正在处理请求：/checkLogin
+2019-03-11 10:27:40.814 - HikariPool-1 - Starting...
+2019-03-11 10:27:41.347 - HikariPool-1 - Start completed.
+2019-03-11 10:27:41.362 - ==>  Preparing: SELECT U.USER_ID, U.USER_NAME, U.PASSWORD, U.COMPANY FROM T_USER U WHERE 1 = 1 AND U.USER_ID = ? 
+2019-03-11 10:27:41.428 - ==> Parameters: null
+2019-03-11 10:27:41.537 - <==      Total: 0
