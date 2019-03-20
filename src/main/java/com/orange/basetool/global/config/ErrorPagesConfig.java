@@ -1,4 +1,4 @@
-package com.orange.basetool.config.global;
+package com.orange.basetool.global.config;
 
 import org.springframework.boot.web.server.ConfigurableWebServerFactory;
 import org.springframework.boot.web.server.ErrorPage;

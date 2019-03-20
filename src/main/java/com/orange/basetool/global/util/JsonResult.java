@@ -1,4 +1,4 @@
-package com.orange.basetool.util;
+package com.orange.basetool.global.util;
 
 public class JsonResult {
 
@@ -101,6 +101,6 @@ public class JsonResult {
 
     @Override
     public String toString(){
-        return "[code = "+getCode()+" , msg = "+getMsg()+" , data = "+ data+"]";
+        return "{code:"+getCode()+",msg:"+getMsg()+",data:"+data+"}";
     }
 }

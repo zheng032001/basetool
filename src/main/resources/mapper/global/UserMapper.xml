@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.orange.basetool.mapper.primary.LoginLogoutMapper">
+<mapper namespace="com.orange.basetool.global.mapper.UserMapper">
     <select id="checkLogin" parameterType="java.util.Map" resultType="Map" >
 	    SELECT
 	      U.USER_ID,
 	      U.USER_NAME,
 	      U.PASSWORD,
 	      U.COMPANY
-	    FROM T_USER U
+	    FROM SYS_USER U
 	    WHERE 1 = 1
-	      AND U.USER_ID = #{user_id}
+	      AND U.USER_ID = #{userId,jdbcType=VARCHAR}
     </select>
+	
+	<select id="getPasswordByUserid" parameterType="java.util.Map" resultType="Map">
+		SELECT T.PASSWORD FROM SYS_USER T WHERE T.USER_ID = #{userId,jdbcType=VARCHAR}
+	</select>
 </mapper>

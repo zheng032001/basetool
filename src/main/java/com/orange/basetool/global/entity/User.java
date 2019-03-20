@@ -1,4 +1,4 @@
-package com.orange.basetool.entity.global;
+package com.orange.basetool.global.entity;
 
 
 import org.springframework.context.annotation.Bean;

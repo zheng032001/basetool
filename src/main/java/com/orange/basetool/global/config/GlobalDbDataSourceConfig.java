@@ -1,4 +1,4 @@
-package com.orange.basetool.config;
+package com.orange.basetool.global.config;
 
 
 import com.alibaba.druid.pool.DruidDataSource;
@@ -10,18 +10,24 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
 
+
+/**
+ * 主数据源，用于权限及本应用的数据操作
+ */
 @Configuration
-@MapperScan(basePackages = "com.orange.basetool.mapper.test",sqlSessionTemplateRef = "testDbSqlSessionTemplate")
-public class TestDbDataSourceConfig {
+@MapperScan(basePackages = "com.orange.basetool.global.mapper",sqlSessionTemplateRef = "primaryDbSqlSessionTemplate")
+public class GlobalDbDataSourceConfig {
 
     @Bean
-    @ConfigurationProperties(prefix = "spring.datasource.test-db")
-    public DataSource testDbDataSource(){
+    @ConfigurationProperties(prefix = "spring.datasource.primary-db")
+    @Primary
+    public DataSource primaryDbDataSource(){
         // SpringBoot原生方法
 //        return DataSourceBuilder.create().build();
         // Druid 数据源
@@ -29,20 +35,23 @@ public class TestDbDataSourceConfig {
     }
 
     @Bean
-    public SqlSessionFactory testDbSqlSessionFactory(@Qualifier("testDbDataSource") DataSource dataSource) throws Exception{
+    @Primary
+    public SqlSessionFactory primaryDbSqlSessionFactory(@Qualifier("primaryDbDataSource") DataSource dataSource) throws Exception{
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:/mapper/test/*.xml"));
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:/mapper/global/*.xml"));
         return bean.getObject();
     }
 
     @Bean
-    public DataSourceTransactionManager testDbTransactionManager(@Qualifier("testDbDataSource") DataSource dataSource) {
+    @Primary
+    public DataSourceTransactionManager primaryDbTransactionManager(@Qualifier("primaryDbDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
     @Bean
-    public SqlSessionTemplate testDbSqlSessionTemplate(@Qualifier("testDbSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
+    @Primary
+    public SqlSessionTemplate primaryDbSqlSessionTemplate(@Qualifier("primaryDbSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 }
