@@ -1,5 +1,6 @@
 package com.orange.basetool.global.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.orange.basetool.global.mapper.UserMapper;
 import com.orange.basetool.global.service.IUserService;
 import com.orange.basetool.global.util.JsonResult;
@@ -23,8 +24,7 @@ public class UserService implements IUserService {
 
     @Override
     public JsonResult checkLogin(HttpServletRequest httpServletRequest) {
-//        PageHelper.startPage(1,2,false);
-        Map<String,Object> param = QueryUtil.buildParam(httpServletRequest,"userId");
+        Map<String,Object> param = QueryUtil.buildParamWithoutCount(httpServletRequest,"userId");
         List<Map<String,Object>> resultList = userMapper.checkLogin(param);
         return QueryUtil.buildResult(resultList);
     }

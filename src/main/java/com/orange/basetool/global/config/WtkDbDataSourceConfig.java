@@ -16,12 +16,12 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan(basePackages = "com.orange.basetool.mapper.test",sqlSessionTemplateRef = "testDbSqlSessionTemplate")
-public class TestDbDataSourceConfig {
+@MapperScan(basePackages = "com.orange.basetool.wtk.mapper",sqlSessionTemplateRef = "wtkDbSqlSessionTemplate")
+public class WtkDbDataSourceConfig {
 
     @Bean
-    @ConfigurationProperties(prefix = "spring.datasource.test-db")
-    public DataSource testDbDataSource(){
+    @ConfigurationProperties(prefix = "spring.datasource.wtk-db")
+    public DataSource wtkDbDataSource(){
         // SpringBoot原生方法
 //        return DataSourceBuilder.create().build();
         // Druid 数据源
@@ -29,20 +29,20 @@ public class TestDbDataSourceConfig {
     }
 
     @Bean
-    public SqlSessionFactory testDbSqlSessionFactory(@Qualifier("testDbDataSource") DataSource dataSource) throws Exception{
+    public SqlSessionFactory wtkDbSqlSessionFactory(@Qualifier("wtkDbDataSource") DataSource dataSource) throws Exception{
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:/mapper/test/*.xml"));
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:/mapper/wtk/*.xml"));
         return bean.getObject();
     }
 
     @Bean
-    public DataSourceTransactionManager testDbTransactionManager(@Qualifier("testDbDataSource") DataSource dataSource) {
+    public DataSourceTransactionManager wtkDbTransactionManager(@Qualifier("wtkDbDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
     @Bean
-    public SqlSessionTemplate testDbSqlSessionTemplate(@Qualifier("testDbSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
+    public SqlSessionTemplate wtkDbSqlSessionTemplate(@Qualifier("wtkDbSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 }
