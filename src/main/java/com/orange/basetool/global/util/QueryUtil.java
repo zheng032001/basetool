@@ -17,11 +17,8 @@ public class QueryUtil {
      * @return 结果
      */
     public static JsonResult buildResult(List<Map<String,Object>> list){
-        Map<String,Object> map = new HashMap<>();
         PageInfo pageInfo = new PageInfo<>(list);
-        map.put("data",JsonUtil.list2Array(list));
-        map.put("total",pageInfo.getTotal());
-        return new JsonResult(map);
+        return new JsonResult(JsonUtil.list2Array(list), (int) pageInfo.getTotal());
     }
 
     /**
@@ -34,7 +31,7 @@ public class QueryUtil {
     public static Map<String,Object> buildParam(HttpServletRequest httpServletRequest,boolean countTotal,String... keys){
         Map<String,Object> map = new HashMap<>();
         // 默认需要构造的参数
-        String[] defaultKeys = {"pageSize","pageNum","orderBy"};
+        String[] defaultKeys = {"page","limit","field","order"};
         // 构造默认参数，自动trim
         for(String key : defaultKeys){
             if(null != httpServletRequest.getParameter(key)&&!"".equals(httpServletRequest.getParameter(key).trim())){
@@ -45,13 +42,13 @@ public class QueryUtil {
         int pageNum = -1;
         String orderBy = "" ;
         // 分页
-        if(map.containsKey("pageNum")){
-            pageNum = Integer.parseInt(map.get("pageNum").toString());
-            pageSize = Integer.parseInt(map.get("pageSize").toString());
+        if(map.containsKey("page")){
+            pageNum = Integer.parseInt(map.get("page").toString());
+            pageSize = Integer.parseInt(map.get("limit").toString());
         }
         // 排序
-        if(map.containsKey("orderBy")){
-           orderBy = map.get("orderBy").toString();
+        if(map.containsKey("field")){
+           orderBy = map.get("field").toString()+" "+map.get("order");
         }
         PageHelper.startPage(pageNum,pageSize,countTotal);
         PageHelper.orderBy(orderBy);

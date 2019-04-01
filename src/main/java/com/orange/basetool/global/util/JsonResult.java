@@ -10,13 +10,18 @@ public class JsonResult {
     /**
      * 状态代码
      */
-    private int code = 0;
+    private int code = -1;
 
 
     /**
      * 返回数据
      */
     private Object data = "";
+
+    /**
+     * 记录总数
+     */
+    private int count = -1;
 
     /**
      * 默认无参构造
@@ -36,35 +41,48 @@ public class JsonResult {
     }
 
     /**
-     * 重载构造方法，设置状态
+     * 重载构造方法，设置状态码+数据+总数
      * @param code  状态
      * @param data  数据
+     * @param count 总数
      */
-    public JsonResult(int code,Object data){
-            this.setCode(code);
-            this.setData(data);
+    public JsonResult(int code,Object data,int count){
+        this.setCode(code);
+        this.setData(data);
+        this.setCount(count);
     }
 
     /**
-     * 重载构造方法，默认状态200，设置消息
+     * 重载构造方法，设置数据+总数，默认状态码：0
+     * @param code  状态
+     * @param data  数据
+     */
+    public JsonResult(Object data,int count){
+        this.setCode(0);
+        this.setData(data);
+        this.setCount(count);
+    }
+
+    /**
+     * 重载构造方法，默认状态码：0，设置消息
      * @param msg 消息
      */
     public JsonResult(String msg){
-        this.setCode(200);
+        this.setCode(0);
         this.setMsg(msg);
     }
 
     /**
-     * 重载构造方法，默认状态200，设置数据
+     * 重载构造方法，默认状态码：0，设置数据
      * @param data 数据
      */
     public JsonResult(Object data){
-        this.setCode(200);
+        this.setCode(0);
         this.setData(data);
     }
 
     /**
-     * 重载构造方法，可以设置全部参数
+     * 重载构造方法，设置状态码，消息，数据
      * @param code  状态
      * @param msg   消息
      * @param data  数据
@@ -73,6 +91,20 @@ public class JsonResult {
         this.setCode(code);
         this.setMsg(msg);
         this.setData(data);
+    }
+
+    /**
+     * 重载构造方法，设置全部参数
+     * @param code  状态
+     * @param msg   消息
+     * @param data  数据
+     * @param count 总数
+     */
+    public JsonResult(int code,String msg,Object data,int count){
+        this.setCode(code);
+        this.setMsg(msg);
+        this.setData(data);
+        this.setCount(count);
     }
 
     public String getMsg() {
@@ -97,6 +129,14 @@ public class JsonResult {
 
     public void setData(Object data) {
         this.data = data;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
     @Override
