@@ -9,4 +9,7 @@ import java.util.Map;
 public interface UserMapper {
 
     List<Map<String,Object>> checkLogin(Map<String,Object> param);
+
+
+    List<Map<String,Object>> getUserList(Map<String,Object> param);
 }

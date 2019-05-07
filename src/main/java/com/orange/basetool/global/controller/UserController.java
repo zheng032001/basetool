@@ -56,4 +56,36 @@ public class UserController {
         return null;
     }
 
+    /**
+     * 用户列表页面--测试
+     * @param httpServletRequest request
+     * @return page
+     */
+    @RequestMapping("/userListPage")
+    public String userListPage(HttpServletRequest httpServletRequest){
+        log.info("正在处理请求：" + httpServletRequest.getRequestURI());
+        return "global/userListPage";
+    }
+
+    /**
+     * 获取用户列表--测试
+     * @param httpServletRequest request
+     * @return result
+     */
+    @RequestMapping("/getUserList")
+    @ResponseBody
+    public JsonResult getUserList(HttpServletRequest httpServletRequest){
+        log.info("正在处理请求：" + httpServletRequest.getRequestURI());
+        JsonResult result = userService.getUserList(httpServletRequest);
+//        JSONObject json = new JSONObject();
+//        json.put("status",0);
+//        json.put("code",0);
+//        Map<String,Object> map = (Map<String, Object>) result.getData();
+//        json.put("total",map.get("total"));
+//        json.put("data",map.get("data"));
+//        System.out.println(json);
+        System.out.println(result);
+        return result;
+    }
+
 }
